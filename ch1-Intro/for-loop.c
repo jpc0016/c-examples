@@ -4,7 +4,9 @@
 * for-loop.c
 *
 * Conversion table of Fahrenheit and Celsius
-* using a for-loop
+* using a for-loop; can define constants such as lower and upper
+*
+* page 14 - 15
 */
 
 #include <stdio.h>
@@ -12,12 +14,20 @@
 /* print Fahrenheit-Celsius table
   for fahr = 0, 20, ..., 300 */
 
+// Symbolic Constants
+// ; not used for defined constants
+// defined constants are outside main()
+#define LOWER 0
+#define UPPER 300
+#define STEP 20
+
+
 int main() {
 
     int fahr;
 
     // initialization; test condition; increment step
-    for (fahr = 0; fahr <= 300; fahr = fahr + 20)
+    for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
       printf("%3d\t%6.1f\n", fahr, (5.0/9.0) * (fahr - 32.0));
   }
 
