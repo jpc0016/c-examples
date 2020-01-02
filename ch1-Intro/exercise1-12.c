@@ -52,3 +52,15 @@ int main(){
 
   return 0;
 }
+
+/*
+OUTPUT:
+
+hello my name is earl
+hello
+my
+name
+is
+earl
+
+*/
