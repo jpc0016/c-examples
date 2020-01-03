@@ -22,34 +22,35 @@ int main() {
     nw = new word
     nc = new character
     state = boolean representation for if a word is still being counted
-    char_count = character count for each word   */
-  int c, nl, nw, nc, state, char_count;
+    char_per_word = character count for each word   */
+  int c, nl, nw, nc, state, char_per_word;
 
-  // initialize array of size nw
-  int word_count[0];
+  // initialize array of size nw to hold character count of each word
+  int char_array[10];
 
   // initialize everything to 0
   state = OUT;
-  nl = nw = nc = char_count = 0;
+  nl = nw = nc = char_per_word = 0;
 
   // Start with familiar getchar while loop
-  while ((c = getchar()) != EOF){
+  while ((c = getchar()) != EOF) {
     ++nc;
     if (c == '\n') {
       ++nl;
-      char_count = 0;
+      //char_per_word = 0;
     }
     if (c == ' ' || c == '\t' || c == '\n') {
       state = OUT;
-      char_count = 0;
+      //char_per_word = 0;
     }
     else if (state == OUT) {
       state = IN;
-      word_count[nw] = char_count;
+      char_array[nw] = char_per_word + 1;
       ++nw;   // start of a new word
+      char_per_word = 0;
     }
     else
-      char_count += 1;
+      ++char_per_word;
   }
 
   /*
@@ -59,7 +60,34 @@ int main() {
   */
 
   printf("\nnl: %d nw: %d nc: %d\n", nl, nw, nc);
+  printf("\n");
 
+  /* Declare empty dictionary */
+
+
+  /* print number of characters for each word in nw
+      for troubleshooting purposes */
+  printf("char_array:\n");
+  for (int i=1; i < nw; i++) {
+    printf("char_array[%d] %d\n", i, char_array[i]);
+  }
+  printf("\n");
+
+  /* Search through char_array and get number of unique character counts
+    Iterating over all possible character lengths */
+  for (int j=1; j<10; j++){
+    printf("[%d] ", j);
+
+    /* Check if j exists in char_array
+      Iterating over each element in char_array */
+    for (int k=1; k<nw; k++) {
+      if (j == char_array[k]) {
+        //for (int x=0; x<j; x++)
+        printf("*");
+      }
+    }
+    printf("\n");
+  }
 
 
   return 0;
